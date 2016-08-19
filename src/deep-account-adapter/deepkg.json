@@ -1,0 +1,27 @@
+{
+  "identifier": "deep-account-adapter",
+  "name": "deep-account-adapter",
+  "description": "Manages account related functionality of a Deep project.",
+  "version": "0.0.1",
+  "propertyRoot": false,
+  "author": {
+    "name": "Mitoc Group",
+    "email": "hello@mitocgroup.com",
+    "website": "http://www.mitocgroup.com"
+  },
+  "contributors": [
+    {
+      "name": "Marcel Goria",
+      "email": "mgoria@mitocgroup.com"
+    },
+    {
+      "name": "Alexander Cucer",
+      "email": "acucer@mitocgroup.com"
+    },
+    {
+      "name": "Irina Covali",
+      "email": "icovali@mitocgroup.com"
+    }
+  ],
+  "dependencies": {}
+}

@@ -1,0 +1,14 @@
+{
+  "name": "deep-account-adapter-user-retrieve",
+  "version": "0.0.1",
+  "description": "Retrieves a user",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "npm run compile",
+    "compile": "deepify compile es6 `pwd`"
+  },
+  "dependencies": {
+    "deep-framework": "^1.x.x"
+  },
+  "private": true
+}
