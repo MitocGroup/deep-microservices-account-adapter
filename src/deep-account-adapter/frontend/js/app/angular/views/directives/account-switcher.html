@@ -1,0 +1,15 @@
+<div flex-item class="p+">
+    <lx-select ng-model="switchCtrl.accountProvider.account"
+               change="switchCtrl.setAccount(a, b)"
+               placeholder="Current Account"
+               choices="switchCtrl.accountProvider.accounts"
+               floating-label>
+        <lx-select-selected>
+            {{ $selected.Name}}
+        </lx-select-selected>
+
+        <lx-select-choices>
+            {{ $choice.Name }}
+        </lx-select-choices>
+    </lx-select>
+</div>

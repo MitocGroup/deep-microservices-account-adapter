@@ -1,0 +1,94 @@
+{
+  "frontend": {
+  },
+  "backend": {
+  },
+  "globals": {
+    "security|identityProviders|www.amazon.com": {
+      "displayName": "Amazon Identity Provider",
+      "type": "string",
+      "required": false,
+      "example": "amzn1.application.3b5k2jb65432352gfd5b23kj5hb"
+    },
+    "auth0|init|domain": {
+      "displayName": "Auth0 domain",
+      "type": "string",
+      "required": true,
+      "example": "yourdomain.auth0.com",
+      "default": "yourdomain.auth0.com"
+    },
+    "auth0|init|clientID": {
+      "displayName": "Auth0 client id",
+      "type": "string",
+      "required": true,
+      "example": "your-client-id",
+      "default": "your-client-id"
+    },
+    "auth0|init|thumbprint": {
+      "displayName": "Auth0 thumbprint (How to generate it: http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html)",
+      "type": "string",
+      "required": false,
+      "example": "your-client-thumbprint"
+    },
+    "auth0|init|loginState": {
+      "displayName": "Auth0 login state",
+      "type": "string",
+      "required": true,
+      "example": "auth.signIn",
+      "default": "auth.signIn"
+    },
+    "auth0|init|callbackURL": {
+      "displayName": "Auth0 callback URL",
+      "type": "string",
+      "required": true,
+      "example": "http://YOUR_APP/callback",
+      "default": "http://YOUR_APP/callback"
+    },
+    "auth0|signin|popup": {
+      "displayName": "Auth0 popup",
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "auth0|signin|connections": {
+      "displayName": "Auth0 connections list",
+      "required": true,
+      "type": "string",
+      "example": "amazon, <auth_bd_name>",
+      "default": "amazon"
+    },
+    "auth0|signin|closable": {
+      "displayName": "Auth0 widget closable",
+      "required": true,
+      "type": "boolean",
+      "example": "true",
+      "default": "true"
+    },
+    "auth0|signin|socialBigButtons": {
+      "displayName": "Auth0 connections",
+      "type": "boolean",
+      "required": false,
+      "default": false
+    },
+    "auth0|signin|container": {
+      "displayName": "Auth0 container",
+      "type": "string",
+      "required": false,
+      "example": "auth0-widget"
+    },
+    "auth0|signin|gravatar": {
+      "displayName": "Auth0 gravatar",
+      "type": "boolean",
+      "required": false,
+      "default": false
+    },
+    "userProviderEndpoint": {
+      "displayName": "User Provider Endpoint",
+      "type": "string",
+      "required": true,
+      "pattern": "^@[^:]+:[^:]+:[^:]+$",
+      "example": "@deep-account-adapter:user:retrieve",
+      "default": "@deep-account-adapter:user:retrieve"
+    }
+  }
+}

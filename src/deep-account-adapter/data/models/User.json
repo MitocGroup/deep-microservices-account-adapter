@@ -1,0 +1,9 @@
+{
+  "Id": "string",
+  "Email": "email",
+  "Name": "string",
+  "Nickname": "string",
+  "Roles": "stringSet",
+  "NumberOfAccounts": "number",
+  "Picture": "string"
+}

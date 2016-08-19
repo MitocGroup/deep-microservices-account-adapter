@@ -1,0 +1,59 @@
+{
+  "user": {
+    "create": {
+      "description": "Creates a user",
+      "type": "lambda",
+      "methods": ["POST"],
+      "source": "src/user/create"
+    },
+    "retrieve": {
+      "description": "Retrieves a user",
+      "type": "lambda",
+      "methods": ["GET"],
+      "source": "src/user/retrieve",
+      "cacheTtl": 300,
+      "engine": {
+        "memory": 512
+      }
+    }
+  },
+  "account": {
+    "create" : {
+      "description": "Create a Deep account",
+      "type": "lambda",
+      "methods": ["POST"],
+      "source": "src/account/create"
+    },
+    "retrieve": {
+      "description": "Retrieve a Deep account",
+      "type": "lambda",
+      "methods": ["GET"],
+      "source": "src/account/retrieve",
+      "cacheTtl": 300
+    },
+    "delete": {
+      "description": "Deletes a Deep account",
+      "type": "lambda",
+      "methods": ["DELETE"],
+      "source": "src/account/delete"
+    },
+    "update": {
+      "description": "Update a Deep accounts",
+      "type": "lambda",
+      "methods": ["PUT"],
+      "source": "src/account/update"
+    },
+    "link-user": {
+      "description": "Link an user to an account",
+      "type": "lambda",
+      "methods": ["POST"],
+      "source": "src/account/link-user"
+    },
+    "unlink-user": {
+      "description": "Link an user to an account",
+      "type": "lambda",
+      "methods": ["POST"],
+      "source": "src/account/unlink-user"
+    }
+  }
+}

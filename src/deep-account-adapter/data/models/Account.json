@@ -1,0 +1,8 @@
+{
+  "OwnerId":     "string",
+  "Name":        "string",
+  "Email":       "email",
+  "Users":       "stringSet",
+  "Description": "string",
+  "MarkedAs":    "string"
+}
