@@ -5,7 +5,7 @@ import moduleName from '../name';
 let deepAsset = DeepFramework.Kernel.container.get('asset');
 
 export default
-  angular.module(moduleName).directive('deepAccountAuth0Widget', ['msAuthentication', (msAuthentication)=> {
+  angular.module(moduleName).directive('deepAccountAdapterAuth0Widget', ['msAuthentication', (msAuthentication)=> {
     let link = ()=> {
       msAuthentication.auth0Login(false, false);
     };
