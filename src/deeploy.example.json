@@ -1,0 +1,11 @@
+{
+  "appIdentifier": "dfhgfjhgjgh76867876867hgfhgf",
+  "appName": "My Account Adapter",
+  "env": "dev",
+  "awsAccountId": 123456789012,
+  "aws": {
+    "accessKeyId": "gfdgfd",
+    "secretAccessKey": "+gfdgfdgfdgfd/dEFpHV20ZxpQAkUqXwCSZBtZhCL",
+    "region": "us-west-2"
+  }
+}
