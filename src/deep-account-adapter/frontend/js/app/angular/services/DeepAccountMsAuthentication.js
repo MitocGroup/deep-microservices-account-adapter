@@ -265,9 +265,12 @@ class MsAuthentication {
         defer.reject(error);
       } else {
         securityToken.registerTokenExpiredCallback((identityProvider) => {
-          this.LxNotificationService.info('Your session has expired. Please log in again');
           this.signOut(() => {
-            this.$state.reload();
+            this.$state.reload().then(() => {
+              setTimeout(() => {
+                this.LxNotificationService.info('Your session has expired. Please log in again');
+              }, 1000);
+            });
           });
         });
 
