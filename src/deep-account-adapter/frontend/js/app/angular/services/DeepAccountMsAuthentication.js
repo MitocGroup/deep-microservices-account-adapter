@@ -260,7 +260,6 @@ class MsAuthentication {
     let identity = profile.identities[0];
     this.deepSecurity.login(identity.provider, identity, (error, securityToken)=> {
       if (error) {
-        console.log(error);
         this.LxNotificationService.error(error);
         this.signOut();
         defer.reject(error);
