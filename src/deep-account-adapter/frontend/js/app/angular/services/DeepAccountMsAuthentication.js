@@ -588,13 +588,13 @@ class MsAuthentication {
    */
   onLogout() {
     this.isAuthenticated().then((isLoggedIn) => {
-      if (isLoggedIn) {
-        let $injector = MsAuthentication.$injector;
-        let $rootScope = $injector.get('$rootScope');
+      let $injector = MsAuthentication.$injector;
+      let $rootScope = $injector.get('$rootScope');
 
+      if (isLoggedIn || $rootScope.profile) {
         $rootScope.$broadcast('Logout');
 
-        delete $injector.get('$rootScope').profile;
+        delete $rootScope.profile;
         this.cache.invalidate('profile');
         this.cache.invalidate('idToken');
         this.cache.invalidate('accessToken');
