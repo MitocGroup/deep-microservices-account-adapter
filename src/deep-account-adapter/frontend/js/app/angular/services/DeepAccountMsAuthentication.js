@@ -224,7 +224,7 @@ class MsAuthentication {
   isPrivateState(toState) {
     //States are implicitly considered private unless not specified otherwise
     return (typeof toState.data === 'undefined' ||
-      typeof toState.data.public === 'undefined' || !toState.data.public);
+    typeof toState.data.public === 'undefined' || !toState.data.public);
   }
 
   /**
@@ -588,13 +588,14 @@ class MsAuthentication {
    */
   onLogout() {
     this.isAuthenticated().then((isLoggedIn) => {
-      if (isLoggedIn) {
-        let $injector = MsAuthentication.$injector;
-        let $rootScope = $injector.get('$rootScope');
+      let $injector = MsAuthentication.$injector;
+      let $rootScope = $injector.get('$rootScope');
+
+      if (isLoggedIn || $rootScope.profile) {
+        delete $rootScope.profile;
 
         $rootScope.$broadcast('Logout');
 
-        delete $injector.get('$rootScope').profile;
         this.cache.invalidate('profile');
         this.cache.invalidate('idToken');
         this.cache.invalidate('accessToken');
