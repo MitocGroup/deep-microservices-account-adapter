@@ -31,6 +31,7 @@ class MsAuthentication {
     this.tokenPromise = this.$q.defer();
     this.$modal = $injector.get('$modal');
     this.$state = $injector.get('$state');
+    this.$timeout = $injector.get('$timeout');
     this._ready = this.$q.defer();
     this._logOutPromise = this.$q.defer();
     this.anonymousDefer = this.$q.defer();
@@ -267,7 +268,7 @@ class MsAuthentication {
         securityToken.registerTokenExpiredCallback((identityProvider) => {
           this.signOut(() => {
             this.$state.reload().then(() => {
-              setTimeout(() => {
+              this.$timeout(() => {
                 this.LxNotificationService.info('Your session has expired. Please log in again');
               }, 1000);
             });
