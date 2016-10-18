@@ -31,6 +31,7 @@ class MsAuthentication {
     this.tokenPromise = this.$q.defer();
     this.$modal = $injector.get('$modal');
     this.$state = $injector.get('$state');
+    this.$timeout = $injector.get('$timeout');
     this._ready = this.$q.defer();
     this._logOutPromise = this.$q.defer();
     this.anonymousDefer = this.$q.defer();
@@ -224,7 +225,7 @@ class MsAuthentication {
   isPrivateState(toState) {
     //States are implicitly considered private unless not specified otherwise
     return (typeof toState.data === 'undefined' ||
-      typeof toState.data.public === 'undefined' || !toState.data.public);
+    typeof toState.data.public === 'undefined' || !toState.data.public);
   }
 
   /**
@@ -267,7 +268,7 @@ class MsAuthentication {
         securityToken.registerTokenExpiredCallback((identityProvider) => {
           this.signOut(() => {
             this.$state.reload().then(() => {
-              setTimeout(() => {
+              this.$timeout(() => {
                 this.LxNotificationService.info('Your session has expired. Please log in again');
               }, 1000);
             });
@@ -575,7 +576,7 @@ class MsAuthentication {
       this.cache.set('idToken', idToken);
       this.cache.set('accessToken', accessToken);
 
-      this.LxNotificationService.success('Welcome! You have been successfully logged in');
+      this.LxNotificationService.info('One moment while we load your account information');
       this.authenticatedLogin(profile).then((securityToken) => {
         this.tokenPromise.resolve(securityToken);
         this._ready.resolve(securityToken);
@@ -588,13 +589,14 @@ class MsAuthentication {
    */
   onLogout() {
     this.isAuthenticated().then((isLoggedIn) => {
-      if (isLoggedIn) {
-        let $injector = MsAuthentication.$injector;
-        let $rootScope = $injector.get('$rootScope');
+      let $injector = MsAuthentication.$injector;
+      let $rootScope = $injector.get('$rootScope');
+
+      if (isLoggedIn || $rootScope.profile) {
+        delete $rootScope.profile;
 
         $rootScope.$broadcast('Logout');
 
-        delete $injector.get('$rootScope').profile;
         this.cache.invalidate('profile');
         this.cache.invalidate('idToken');
         this.cache.invalidate('accessToken');
