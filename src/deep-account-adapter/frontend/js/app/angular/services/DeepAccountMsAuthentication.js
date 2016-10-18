@@ -576,7 +576,7 @@ class MsAuthentication {
       this.cache.set('idToken', idToken);
       this.cache.set('accessToken', accessToken);
 
-      this.LxNotificationService.success('Welcome! You have been successfully logged in');
+      this.LxNotificationService.info('One moment while we load your account information');
       this.authenticatedLogin(profile).then((securityToken) => {
         this.tokenPromise.resolve(securityToken);
         this._ready.resolve(securityToken);
