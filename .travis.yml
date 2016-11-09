@@ -23,9 +23,6 @@ after_success:
 after_script:
   - npm run remove-coverage
 env:
-  matrix:
-    - TEST_SUITE=backend
-    - TEST_SUITE=frontend
   global:
     - DEEP_NO_INTERACTION=1
     - E2E_TESTING=none
@@ -46,6 +43,9 @@ env:
         SIxxxrGwDmSwuUWDwPz8LzLTVwYOq2b/aJydx+U5CKTkiC2CYk5/yLxxG8IXjwiAwOndFVUGBYQvL2Jfz5ne+1mxyszzpg+1Ej/JTyrLYsbAEiTGxn9MQvUsK0u+YjF7l0r0AN9Sm397lmQhC37r4n23Np6PPzFHi/wem1LkkX57y9Yph4EhFO2+uyeqqq5z80aWHTUaxusmbZvyKH8jrsQfGUsqFQTbqXJ5JrVXEx1KgIeCG0U+BR6ZYC24ZPVTSi6YGcBEi3F48IUubewZXqzGF/aY3aPb3ww3GzZqBLa4sSbZk6BQBjMMnnPNweGfKiueiq5CoagMnS3NYUvZREQ7mqIhwLEid6a29Y+yq2WEYyrC5w630ytWowgpNCzUtbGfri9vKa8f8H3Za/q7d//RA1XM3vXKmjk257JOtwFd5oPznj2JF6/FRtXiw5mr/ZsmZqiX6YXH5Jqe3fUTqnx7JKfGve9Jf0DOT8hxQSiUJD3j3KQ1ipHMYayJGq56fbEpolPGjv+niUgfbV5gjKSQnOt9K8ABrHIJEnHu5C0DBSH2EkoeQxh84K3B/UENnj3beyexQXzu+M6pGzBN4EShP5J8fLmbT2IfjjbC/9IGGIM/05aSLGzX1zO3VzjocusruR+G++VLJQ1Kfe9pujMgfQgz+8NEPETkeGaEyYM=
     - secure: 
         lDqHuJC0dxV/Iix9ZsaIqbmhi0qqobdPrS2tfspoMw5WlhRkPsjCJip1K3eEWd+j66Jtd6L6yppqOxzngMKn1dbgoyGY5MwzIteBby5wzDSN7ghLPZrGCJcJRbdE2AMYQhzoeQE4lMiVFBugjTvpPEEX/p61VAuEsxBu40+6SQqRE1C93KHjJ3NESi0vie6PcShyoXmfRjmMPROnR6JqvNIHwRXxOZXaDEVirkTgjWyzuKjO/4rvjGELb2SFifycn/frVL7U4mvYxWCJezTYkB63FKdmqhRpBL1MVcrAHwweOdVKKKm5FMKDc9/6Rxb6QBw+XXktF1hIwJY/UTB+Py90ZqCwT3zaa5gn3ASNaW8HtWKZPOrOpeISGdkxgb4nYzgeNG8WtBL2OdDJXE5HPO4L8ZqHzAqeMlRqiZBnaySUZmMyxqBtY6vmZ6uEScVCF/41BzFh1UqDOOKWnveqT3qM4gqBRaAi/CcxkALzLaxCyVZgxu0OnwHDbwYH1eQikTAhI5Zd/Hr3cWrDERah7rB5M48mr8XNmlsWhlKxeYguanhFmk3oAsoaQ6CrMmDyGDu43YFTw1AEYNFQBd10feHqKUNCN7lHZ7VUZSNkmDXe80Ny6Lr0fh8bJIr8C1KrAk7lgSyoeqDO0S+tJU6HgxVljQqvzcwk+rQh7n5566U=
+  matrix:
+    - TEST_SUITE=backend
+    - TEST_SUITE=frontend
 notifications:
   slack:
     secure: 
