@@ -659,10 +659,9 @@ class MsAuthentication {
    */
   adjustProfile(profile, idToken) {
     let identity = profile.identities[0];
+    let sessionDuration = DeepFramework.Kernel.config.microservices['deep-account-adapter'].parameters.sessionDuration;
 
-    //Amazon access tokens are only valid for sixty minutes (https://auth0.com/docs/tokens/idp)
-    //https://developer.amazon.com/public/apis/engage/login-with-amazon/docs/access_token.html
-    identity.tokenExpirationTime = this.addMinutesToCurrentTime(60);
+    identity.tokenExpirationTime = this.addMinutesToCurrentTime(sessionDuration);
 
     // when signin with auth0 with database connection "idToken" is used as an access_token for Cognito
     identity.access_token = idToken;

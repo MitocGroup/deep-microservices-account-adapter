@@ -1,5 +1,12 @@
 {
   "frontend": {
+    "sessionDuration" : {
+      "displayName": "Session duration time in minutes",
+      "type": "number",
+      "required": true,
+      "example": 60,
+      "default": 1440
+    }
   },
   "backend": {
   },
