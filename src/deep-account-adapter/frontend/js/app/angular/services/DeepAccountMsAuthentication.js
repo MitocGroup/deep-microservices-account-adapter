@@ -608,24 +608,24 @@ class MsAuthentication {
         this.tokenPromise = $injector.get('$q').defer();
         this._ready = $injector.get('$q').defer();
         this.LxNotificationService.success('User has successfully logged out');
-        this.deepSecurity.logout();
+        Promise.resolve(this.deepSecurity.logout()).then(() => { // Promise.resolve is used to ensure backward compatibility
+          $rootScope.$emit('USER_LOGOUT', this[auth0_].profile);
 
-        $rootScope.$emit('USER_LOGOUT', this[auth0_].profile);
+          this.anonymousLogin().then((token) => {
+            this.anonymousDefer.resolve(token);
 
-        this.anonymousLogin().then((token) => {
-          this.anonymousDefer.resolve(token);
+            if (!$rootScope.$$phase) {
+              $rootScope.$apply();
+            }
+          }, (error) => {
+            this.anonymousDefer.reject(error);
+          });
 
-          if (!$rootScope.$$phase) {
-            $rootScope.$apply();
+          let cb;
+          for (cb of this[onLogOutCbList_]) {
+            cb();
           }
-        }, (error) => {
-          this.anonymousDefer.reject(error);
         });
-
-        let cb;
-        for (cb of this[onLogOutCbList_]) {
-          cb();
-        }
       }
     });
   }
