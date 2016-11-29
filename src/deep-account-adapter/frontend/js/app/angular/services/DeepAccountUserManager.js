@@ -73,7 +73,7 @@ class DeepAccountUserManager{
       Email: email,
     };
 
-    this.userResource.request('retrieve', payload).send((response) => {
+    this.userResource.request('retrieve', payload).retry(3).send((response) => {
       if (response.isError) {
         defer.reject(response.error);
       } else {
