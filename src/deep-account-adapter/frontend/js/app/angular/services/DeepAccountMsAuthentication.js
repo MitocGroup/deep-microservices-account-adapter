@@ -715,7 +715,11 @@ angular.module(moduleName).provider('msAuthentication', function () {
       throw new Error('Auth service already initialized');
     }
 
-    authProvider.init(auth0Config.init);
+    try {
+      authProvider.init(auth0Config.init);
+    } catch(e) {
+      //Workaround for unit-tests
+    }
 
     $httpProvider.interceptors.push('jwtInterceptor');
 

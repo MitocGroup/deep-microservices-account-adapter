@@ -20,12 +20,14 @@ import moduleName from '../../../../frontend/js/app/angular/name';
     module('templates');
 
     // module('auth0', function(authProvider) {
-    //   spyOn(authProvider, 'init').andCallThrough();
+    //   authProvider.init = function() {};
+    //   spyOn(authProvider, 'init').and.callThrough();
     // });
 
     angular.mock.module(moduleName);
 
     module(($provide) => {
+
       $provide.provider('Notification', function () {
         this.$get = () => {
           var notify = function () {
