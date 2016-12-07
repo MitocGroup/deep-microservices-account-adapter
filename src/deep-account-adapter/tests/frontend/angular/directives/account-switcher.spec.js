@@ -19,18 +19,30 @@ import moduleName from '../../../../frontend/js/app/angular/name';
     module('ui.router');
     module('templates');
 
-    module(moduleName, function(msAuthenticationProvider) {
-      spyOn(msAuthenticationProvider, 'init').andCallThrough();
-    });
-
-    module(moduleName);
+    // module('auth0', function(authProvider) {
+    //   spyOn(authProvider, 'init').andCallThrough();
+    // });
 
     angular.mock.module(moduleName);
 
+    module(($provide) => {
+      $provide.provider('Notification', function () {
+        this.$get = () => {
+          var notify = function () {
+          };
+
+          notify.setElement = function () {
+          };
+          notify.error = function (error) {
+          };
+
+          return notify;
+        };
+      });
+    });
+
     inject((_$controller_, $templateCache, $compile, $rootScope) => {
 
-      // workaround for deepAsset.locate:
-      // assign the template to the expected url called by the directive and put it in the cache
       let template = $templateCache.get('frontend/js/app/angular/views/directives/account-switcher.html');
       $templateCache.put('js/app/angular/views/directives/account-switcher.html', template);
 
@@ -38,9 +50,6 @@ import moduleName from '../../../../frontend/js/app/angular/name';
       compile = $compile;
       rootScope = $rootScope;
       scope = $rootScope.$new();
-
-      //how to set model testedModelValue value for directive
-      //scope.testedModelValue = null;
     });
   });
 

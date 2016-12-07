@@ -18,16 +18,22 @@ import moduleName from '../../../../frontend/js/app/angular/name';
     module('templates');
     angular.mock.module(moduleName);
 
-    // store references to scope, rootScope and compile
-    // so they are available to all tests in this describe block
-    //
-    // $compile service that is responsible for compiling any HTML template
-    // $templateCache  service that is responsible for caching template for quick retrieval
-    // $controller service that is responsible for instantiating controllers
-    // $rootScope ngMock’s service to allow getting an instance of angular’s core and create child scopes via its $new
-    //
-    // The underscores are a convenience trick to inject a service under a different name
-    // so that we can locally assign a local variable of the same name as the service.
+    module(($provide) => {
+      $provide.provider('Notification', function () {
+        this.$get = () => {
+          var notify = function () {
+          };
+
+          notify.setElement = function () {
+          };
+          notify.error = function (error) {
+          };
+
+          return notify;
+        };
+      });
+    });
+
     inject((_$controller_, $templateCache, $compile, $rootScope) => {
 
       // workaround for deepAsset.locate:

@@ -11,7 +11,180 @@ DeepFramework.Kernel.load({
     'deep-account-adapter': {
       'isRoot': true,
       'parameters': {},
-      'resources': {}
+      'resources': {
+        "user": {
+          "create": {
+            "type": "lambda",
+            "methods": [
+              "POST"
+            ],
+            "forceUserIdentity": true,
+            "apiCache": {
+              "enabled": false,
+              "ttl": -1
+            },
+            "region": "us-west-2",
+            "scope": "public",
+            "source": {
+              "api": "/deep-account-adapter/user/create",
+              "original": "arn:aws:lambda:::function:deep-account-adapter-user-create",
+            },
+            "api": {
+              "authorization": "AWS_IAM",
+              "keyRequired": false
+            }
+          },
+          "retrieve": {
+            "type": "lambda",
+            "methods": [
+              "GET"
+            ],
+            "forceUserIdentity": true,
+            "apiCache": {
+              "enabled": true,
+              "ttl": 300
+            },
+            "region": "us-west-2",
+            "scope": "public",
+            "source": {
+              "api": "/deep-account-adapter/user/retrieve",
+              "original": "arn:aws:lambda:::function:deep-account-adapter-user-retrieve"
+            },
+            "api": {
+              "authorization": "AWS_IAM",
+              "keyRequired": false
+            }
+          }
+        },
+        "account": {
+          "create": {
+            "type": "lambda",
+            "methods": [
+              "POST"
+            ],
+            "forceUserIdentity": true,
+            "apiCache": {
+              "enabled": false,
+              "ttl": -1
+            },
+            "region": "us-west-2",
+            "scope": "public",
+            "source": {
+              "api": "/deep-account-adapter/account/create",
+              "original": "arn:aws:lambda:::function:deep-account-adapter-account-create"
+            },
+            "api": {
+              "authorization": "AWS_IAM",
+              "keyRequired": false
+            }
+          },
+          "retrieve": {
+            "type": "lambda",
+            "methods": [
+              "GET"
+            ],
+            "forceUserIdentity": true,
+            "apiCache": {
+              "enabled": true,
+              "ttl": 300
+            },
+            "region": "us-west-2",
+            "scope": "public",
+            "source": {
+              "api": "/deep-account-adapter/account/retrieve",
+              "original": "arn:aws:lambda:::function:deep-account-adapter-account-retrieve",
+            },
+            "api": {
+              "authorization": "AWS_IAM",
+              "keyRequired": false
+            }
+          },
+          "delete": {
+            "type": "lambda",
+            "methods": [
+              "DELETE"
+            ],
+            "forceUserIdentity": true,
+            "apiCache": {
+              "enabled": false,
+              "ttl": -1
+            },
+            "region": "us-west-2",
+            "scope": "public",
+            "source": {
+              "api": "/deep-account-adapter/account/delete",
+              "original": "arn:aws:lambda:::function:deep-account-adapter-account-delete",
+            },
+            "api": {
+              "authorization": "AWS_IAM",
+              "keyRequired": false
+            }
+          },
+          "update": {
+            "type": "lambda",
+            "methods": [
+              "PUT"
+            ],
+            "forceUserIdentity": true,
+            "apiCache": {
+              "enabled": false,
+              "ttl": -1
+            },
+            "region": "us-west-2",
+            "scope": "public",
+            "source": {
+              "api": "/deep-account-adapter/account/update",
+              "original": "arn:aws:lambda:::function:deep-account-adapter-account-update",
+            },
+            "api": {
+              "authorization": "AWS_IAM",
+              "keyRequired": false
+            }
+          },
+          "link-user": {
+            "type": "lambda",
+            "methods": [
+              "POST"
+            ],
+            "forceUserIdentity": true,
+            "apiCache": {
+              "enabled": false,
+              "ttl": -1
+            },
+            "region": "us-west-2",
+            "scope": "public",
+            "source": {
+              "api": "/deep-account-adapter/account/link-user",
+              "original": "arn:aws:lambda:::function:deep-account-adapter-account-link-user",
+            },
+            "api": {
+              "authorization": "AWS_IAM",
+              "keyRequired": false
+            }
+          },
+          "unlink-user": {
+            "type": "lambda",
+            "methods": [
+              "POST"
+            ],
+            "forceUserIdentity": true,
+            "apiCache": {
+              "enabled": false,
+              "ttl": -1
+            },
+            "region": "us-west-2",
+            "scope": "public",
+            "source": {
+              "api": "/deep-account-adapter/account/unlink-user",
+              "original": "arn:aws:lambda:::function:deep-account-adapter-account-unlink-user",
+            },
+            "api": {
+              "authorization": "AWS_IAM",
+              "keyRequired": false
+            }
+          }
+        }
+      }
     }
   },
   'globals': {
