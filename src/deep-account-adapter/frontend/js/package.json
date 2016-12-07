@@ -16,6 +16,11 @@
     },
     "configFile": "config.core.js",
     "dependencies": {
+      "auth0/angular-storage": "github:auth0/angular-storage@0.0.14",
+      "auth0/angular-jwt": "github:auth0/angular-jwt@0.0.9",
+      "auth0/auth0-angular": "github:auth0/auth0-angular@4.1.0",
+      "auth0/auth0": "github:auth0/auth0.js@7.0.0",
+      "angular-cookies": "npm:angular-cookies@1.5.3"
     },
     "devDependencies": {
       "traceur": "github:jmcriffey/bower-traceur@0.0.92",
