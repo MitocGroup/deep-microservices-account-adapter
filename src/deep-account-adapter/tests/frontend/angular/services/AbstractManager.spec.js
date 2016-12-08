@@ -1,4 +1,4 @@
-// THIS TEST WAS GENERATED AUTOMATICALLY ON 11/09/2016 17:41:07
+// THIS TEST WAS GENERATED AUTOMATICALLY ON 12/07/2016 14:07:24
 
 import {AbstractManager} from '../../../../frontend/js/app/angular/services/AbstractManager';
 

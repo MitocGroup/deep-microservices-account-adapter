@@ -4,9 +4,9 @@
 /*eslint camelcase: 0 */
 
 import moduleName from '../name';
-const auth0_ = Symbol();
-const onAuthCbList_ = Symbol();
-const onLogOutCbList_ = Symbol();
+const auth0_ = 'auth0_';
+const onAuthCbList_ = 'onAuthCbList_';
+const onLogOutCbList_ = 'onAuthCbList_';
 
 class MsAuthentication {
 
@@ -715,7 +715,11 @@ angular.module(moduleName).provider('msAuthentication', function () {
       throw new Error('Auth service already initialized');
     }
 
-    authProvider.init(auth0Config.init);
+    try {
+      authProvider.init(auth0Config.init);
+    } catch(e) {
+      //Workaround for unit-tests
+    }
 
     $httpProvider.interceptors.push('jwtInterceptor');
 

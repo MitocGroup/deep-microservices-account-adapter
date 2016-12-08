@@ -1,35 +1,83 @@
-// THIS TEST WAS GENERATED AUTOMATICALLY ON 11/09/2016 17:41:07
+// THIS TEST WAS GENERATED AUTOMATICALLY ON 12/07/2016 14:07:24
 
 'use strict';
 
-import {auth0-widget} from '../../../../frontend/js/app/angular/directives/auth0-widget';
+import moduleName from '../../../../frontend/js/app/angular/name';
 
-// @todo: Add more advanced tests
-describe('Directives', () => {
+  // @todo: Add more advanced tests
+  describe('Directives', () => {
 
-  describe('auth0-widget', () => {
-    it('Class auth0-widget exists', () => {
-      expect(typeof auth0-widget).toBe('function');
+  let directiveElement;
+  let compile;
+  let scope, rootScope;
+
+  beforeEach(() => {
+
+    // Load modules
+    module('ui.router');
+    module('templates');
+    angular.mock.module(moduleName);
+
+    module(($provide) => {
+      $provide.provider('Notification', function () {
+        this.$get = () => {
+          var notify = function () {
+          };
+
+          notify.setElement = function () {
+          };
+          notify.error = function (error) {
+          };
+
+          return notify;
+        };
+      });
     });
 
-    // @todo: should be reworked by passing valid arguments and add asserts
-    it('Check auth0-widget constructor', () => {
-      let $q = {
-        defer: function() { return; },
-      };
-      let auth0-widget;
+    inject((_$controller_, $templateCache, $compile, $rootScope) => {
+
+      // workaround for deepAsset.locate:
+      // assign the template to the expected url called by the directive and put it in the cache
+      let template = $templateCache.get('frontend/js/app/angular/views/directives/auth0-widget.html');
+      $templateCache.put('js/app/angular/views/directives/auth0-widget.html', template);
+
+      compile = $compile;
+      rootScope = $rootScope;
+      scope = $rootScope.$new();
+
+      //how to set model testedModelValue value for directive
+      //scope.testedModelValue = null;
+    });
+  });
+
+  /**
+  * Return compiled directive ready for testing
+  * @returns {HTMLDivElement}
+  */
+  function getCompiledElement() {
+    scope.$digest();
+
+    let element = angular.element('<deep-account-adapter-auth0-widget>');
+    let compiledElement = compile(element)(scope);
+    scope.$digest();
+    return compiledElement;
+  }
+
+  //@todo - should be added directive's use cases by using "directiveElement"
+  describe('deepAccountAdapterAuth0Widget', () => {
+    it('deep-account-adapter-auth0-widget has html', () => {
       let error = null;
 
       try {
-        auth0-widget = new auth0-widget($q);
-      } catch(exception) {
+        directiveElement = getCompiledElement();
+      } catch (exception) {
         error = exception;
       }
 
-      if(!error) {
-        expect(auth0-widget instanceof auth0-widget).toBeTruthy();
+      if (!error) {
+        expect(typeof directiveElement).toEqual('object');
+        expect(directiveElement.html()).not.toEqual(undefined);
       }
     });
-  
   });
 });
