@@ -1,4 +1,4 @@
-// THIS TEST WAS GENERATED AUTOMATICALLY ON 11/09/2016 17:41:07
+// THIS TEST WAS GENERATED AUTOMATICALLY ON 12/07/2016 14:07:24
 
 'use strict';
 
@@ -18,22 +18,33 @@ import moduleName from '../../../../frontend/js/app/angular/name';
     // Load modules
     module('ui.router');
     module('templates');
+
+    // module('auth0', function(authProvider) {
+    //   authProvider.init = function() {};
+    //   spyOn(authProvider, 'init').and.callThrough();
+    // });
+
     angular.mock.module(moduleName);
 
-    // store references to scope, rootScope and compile
-    // so they are available to all tests in this describe block
-    //
-    // $compile service that is responsible for compiling any HTML template
-    // $templateCache  service that is responsible for caching template for quick retrieval
-    // $controller service that is responsible for instantiating controllers
-    // $rootScope ngMock’s service to allow getting an instance of angular’s core and create child scopes via its $new
-    //
-    // The underscores are a convenience trick to inject a service under a different name
-    // so that we can locally assign a local variable of the same name as the service.
+    module(($provide) => {
+
+      $provide.provider('Notification', function () {
+        this.$get = () => {
+          var notify = function () {
+          };
+
+          notify.setElement = function () {
+          };
+          notify.error = function (error) {
+          };
+
+          return notify;
+        };
+      });
+    });
+
     inject((_$controller_, $templateCache, $compile, $rootScope) => {
 
-      // workaround for deepAsset.locate:
-      // assign the template to the expected url called by the directive and put it in the cache
       let template = $templateCache.get('frontend/js/app/angular/views/directives/account-switcher.html');
       $templateCache.put('js/app/angular/views/directives/account-switcher.html', template);
 
@@ -41,9 +52,6 @@ import moduleName from '../../../../frontend/js/app/angular/name';
       compile = $compile;
       rootScope = $rootScope;
       scope = $rootScope.$new();
-
-      //how to set model testedModelValue value for directive
-      //scope.testedModelValue = null;
     });
   });
 
@@ -55,8 +63,9 @@ import moduleName from '../../../../frontend/js/app/angular/name';
     scope.$digest();
 
     controller = $controller('AccountSwitcherController', {
-    $scope: scope,
-    $rootScope: rootScope,
+      $scope: scope,
+      $rootScope: rootScope,
+      deepAccount: {},
     });
 
     scope.$digest();

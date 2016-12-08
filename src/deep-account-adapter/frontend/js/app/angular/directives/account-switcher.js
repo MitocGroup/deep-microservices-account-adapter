@@ -25,7 +25,7 @@ export default
       templateUrl: deepAsset.locate('@deep-account-adapter:js/app/angular/views/directives/account-switcher.html'),
     };
   })
-  .controller('AccountSwitcherController', ['deepAccount', 'msAuthentication', (...args) => {
+  .controller('AccountSwitcherController', ['deepAccount', (...args) => {
     return new AccountSwitcherController(...args);
   },
   ]);
