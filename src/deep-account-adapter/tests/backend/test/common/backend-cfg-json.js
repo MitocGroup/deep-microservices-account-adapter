@@ -4,8 +4,24 @@ export default {
   'awsRegion': 'us-west-2',
   'models': [
     {
-      'name': {
-        'Name': 'string'
+      "Account": {
+        "OwnerId": "string",
+        "Name": "string",
+        "Email": "email",
+        "Users": "stringSet",
+        "Description": "string",
+        "MarkedAs": "string"
+      }
+    },
+    {
+      "User": {
+        "Id": "string",
+        "Email": "email",
+        "Name": "string",
+        "Nickname": "string",
+        "Roles": "stringSet",
+        "NumberOfAccounts": "number",
+        "Picture": "string"
       }
     }
   ],
