@@ -35,16 +35,8 @@ export default class extends DeepFramework.Core.AWS.Lambda.Runtime {
       this.retrieveByIds(data.Ids, (users) => {
         return this.createResponse(users).send();
       });
-
     } else {
-
-      // temporary hook!
-      // @todo: remove possibility to retrieve all users...
-      //throw new this.exception.InvalidArgumentException(data.Id, 'string');
-
-      this.retrieveAll((users) => {
-        return this.createResponse(users).send();
-      });
+      throw new this.exception.DatabaseOperationException('Id/Ids parameter is required');
     }
   }
 
