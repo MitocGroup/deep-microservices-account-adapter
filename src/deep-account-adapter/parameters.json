@@ -96,6 +96,13 @@
       "pattern": "^@[^:]+:[^:]+:[^:]+$",
       "example": "@deep-account-adapter:user:retrieve",
       "default": "@deep-account-adapter:user:retrieve"
+    },
+    "userModelName": {
+      "displayName": "User model name",
+      "type": "string",
+      "required": true,
+      "example": "User",
+      "default": "User"
     }
   }
 }
